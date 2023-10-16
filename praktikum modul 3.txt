@@ -1,0 +1,176 @@
+10.
+int buttonPin1 = 5;  // Pin untuk push button 1
+int buttonPin2 = 6;  // Pin untuk push button 2
+int ldrPin = A0;      // Pin analog untuk LDR
+int photodiodePin = A1; // Pin analog untuk fotodioda
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(buttonPin1, INPUT_PULLUP);
+  pinMode(buttonPin2, INPUT_PULLUP);
+}
+
+void loop() {
+  if (digitalRead(buttonPin1) == LOW) {
+    int ldrValue = analogRead(ldrPin);
+    Serial.print("Nilai LDR: ");
+    Serial.println(ldrValue);
+    delay(1000);  // Tunggu 1 detik agar tidak terlalu cepat membaca
+  }
+
+  if (digitalRead(buttonPin2) == LOW) {
+    int photodiodeValue = analogRead(photodiodePin);
+    Serial.print("Nilai Fotodioda: ");
+    Serial.println(photodiodeValue);
+    delay(1000);  // Tunggu 1 detik agar tidak terlalu cepat membaca
+  }
+}
+
+12.
+const int buttonPin = 5; // Pin untuk push button
+const int ldrPin = A0;   // Pin untuk sensor LDR
+const int ledPin = 3;    // Pin untuk LED (dengan kemampuan PWM)
+
+int buttonState = 0;     
+int ldrValue = 0;
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Baca status push button
+  buttonState = digitalRead(buttonPin);
+
+  // Jika push button ditekan, baca nilai LDR dan tampilkan di LED dengan PWM
+  if (buttonState == LOW) {
+    ldrValue = analogRead(ldrPin); // Baca nilai LDR
+    int ledBrightness = map(ldrValue, 0, 1023, 0, 255); // Map nilai LDR ke rentang kecerahan LED (0-255)
+    analogWrite(ledPin, ledBrightness); // Atur kecerahan LED dengan PWM
+    Serial.print("Nilai LDR: ");
+    Serial.println(ldrValue);     // Tampilkan nilai LDR di Serial Monitor
+    delay(100); // Tambahkan delay agar tampilan tidak terlalu cepat berubah
+  } else {
+    analogWrite(ledPin, 0);    // Matikan LED jika push button tidak ditekan
+  }
+}
+
+13.
+int buttonPin1 = 5; // Pin untuk push button 1 (LDR)
+int buttonPin2 = 6; // Pin untuk push button 2 (fotodioda)
+int ldrPin = A0;    // Pin untuk sensor LDR
+int photodiodePin = A1; // Pin untuk sensor fotodioda
+int ledPin = 3;     // Pin untuk LED (dengan kemampuan PWM)
+int buttonState1 = 0;      // Variabel untuk menyimpan status push button 1
+int buttonState2 = 0;      // Variabel untuk menyimpan status push button 2
+int ldrValue = 0;         // Variabel untuk menyimpan nilai LDR
+int photodiodeValue = 0;  // Variabel untuk menyimpan nilai fotodioda
+
+void setup() {
+  pinMode(buttonPin1, INPUT_PULLUP); // Set pin push button 1 sebagai input dengan pull-up resistor
+  pinMode(buttonPin2, INPUT_PULLUP); // Set pin push button 2 sebagai input dengan pull-up resistor
+  pinMode(ledPin, OUTPUT);           // Set pin LED sebagai output dengan kemampuan PWM
+  Serial.begin(9600);               // Inisialisasi komunikasi serial
+}
+
+void loop() {
+  // Baca status push button 1
+  buttonState1 = digitalRead(buttonPin1);
+  
+  // Baca status push button 2
+  buttonState2 = digitalRead(buttonPin2);
+
+  // Jika push button 1 ditekan, baca nilai LDR dan tampilkan di LED dengan PWM
+  if (buttonState1 == LOW) {
+    ldrValue = analogRead(ldrPin); // Baca nilai LDR
+    int ledBrightness = map(ldrValue, 0, 1023, 0, 255); // Map nilai LDR ke rentang kecerahan LED (0-255)
+    analogWrite(ledPin, ledBrightness); // Atur kecerahan LED dengan PWM
+    Serial.print("Nilai LDR: ");
+    Serial.println(ldrValue);     // Tampilkan nilai LDR di Serial Monitor
+    delay(250); 
+  } else if (buttonState2 == LOW) {
+    // Jika push button 2 ditekan, baca nilai fotodioda dan tampilkan di LED dengan PWM
+    photodiodeValue = analogRead(photodiodePin); // Baca nilai fotodioda
+    int ledBrightness = map(photodiodeValue, 0, 1023, 0, 255); // Map nilai fotodioda ke rentang kecerahan LED (0-255)
+    analogWrite(ledPin, ledBrightness); // Atur kecerahan LED dengan PWM
+    Serial.print("Nilai Fotodioda: ");
+    Serial.println(photodiodeValue);     // Tampilkan nilai fotodioda di Serial Monitor
+    delay(250); 
+  } else {
+    analogWrite(ledPin, 0); // Matikan LED jika push button tidak ditekan
+  }
+}
+
+14.
+int buttonPin3 = 7;      // Pin untuk push button 3 (untuk memantau nilai fotodioda di Serial Monitor)
+int photodiodePin = A1;  // Pin untuk sensor fotodioda
+int buzzerPin = 10;       // Pin untuk buzzer
+int thresholdValue = 45; // Nilai batas untuk memicu buzzer
+int buttonState3 = 0;           // Variabel untuk menyimpan status push button 3
+int photodiodeValue = 0;        // Variabel untuk menyimpan nilai fotodioda
+
+void setup() {
+  pinMode(buttonPin3, INPUT_PULLUP); // Set pin push button 3 sebagai input dengan pull-up resistor
+  pinMode(buzzerPin, OUTPUT);       // Set pin buzzer sebagai output
+  Serial.begin(9600);               // Inisialisasi komunikasi serial
+}
+
+void loop() {
+  // Baca status push button 3
+  buttonState3 = digitalRead(buttonPin3);
+
+  // Jika push button 3 ditekan, baca nilai fotodioda dan tampilkan di Serial Monitor
+  if (buttonState3 == LOW) {
+    photodiodeValue = analogRead(photodiodePin); // Baca nilai fotodioda
+    Serial.print("Nilai Fotodioda: ");
+    Serial.println(photodiodeValue); // Tampilkan nilai fotodioda di Serial Monitor
+
+    // Periksa apakah nilai fotodioda melampaui batas
+    if (photodiodeValue > thresholdValue) {
+      // Memicu buzzer
+      tone(buzzerPin, 1000); // Bunyikan buzzer dengan frekuensi 1000 Hz
+      delay(150);            // Berbunyi selama 500 ms
+      noTone(buzzerPin);     // Matikan buzzer
+    }
+
+    delay(200); // Tambahkan delay agar tidak terlalu cepat membaca nilai fotodioda
+  }
+}
+
+15.
+int buttonPin4 = 9;      // Pin untuk push button 3 (untuk memantau nilai fotodioda di Serial Monitor)
+int LDRPin = A0;  // Pin untuk sensor fotodioda
+int buzzerPin = 10;       // Pin untuk buzzer
+int thresholdValue = 500; // Nilai batas untuk memicu buzzer
+int buttonState4 = 0;           // Variabel untuk menyimpan status push button 3
+int LDRValue = 0;        // Variabel untuk menyimpan nilai fotodioda
+
+void setup() {
+  pinMode(buttonPin4, INPUT_PULLUP); // Set pin push button 3 sebagai input dengan pull-up resistor
+  pinMode(buzzerPin, OUTPUT);       // Set pin buzzer sebagai output
+  Serial.begin(9600);               // Inisialisasi komunikasi serial
+}
+
+void loop() {
+  // Baca status push button 3
+  buttonState4 = digitalRead(buttonPin4);
+
+  // Jika push button 3 ditekan, baca nilai fotodioda dan tampilkan di Serial Monitor
+  if (buttonState4 == LOW) {
+    LDRValue = analogRead(LDRPin); // Baca nilai fotodioda
+    Serial.print("Nilai LDR: ");
+    Serial.println(LDRValue); // Tampilkan nilai fotodioda di Serial Monitor
+
+    // Periksa apakah nilai fotodioda melampaui batas
+    if (LDRValue > thresholdValue) {
+      // Memicu buzzer
+      tone(buzzerPin, 1000); // Bunyikan buzzer dengan frekuensi 1000 Hz
+      delay(150);            // Berbunyi selama 500 ms
+      noTone(buzzerPin);     // Matikan buzzer
+    }
+
+    delay(200); // Tambahkan delay agar tidak terlalu cepat membaca nilai fotodioda
+  }
+}
