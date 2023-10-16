@@ -1,0 +1,146 @@
+no.2,3
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);  // set the LCD address to 0x3F for a 16
+//chars and 2 line display
+int tombol = A0;
+int tombol1 = A1;
+int tombol2 = A2;
+
+void setup() {
+  pinMode(tombol, INPUT_PULLUP);
+  pinMode(tombol1, INPUT_PULLUP);
+  lcd.init();
+  // lcd.clear();
+  lcd.backlight();  // Make sure backlight is on
+  // Print a message on both lines of the LCD.
+  lcd.setCursor(0, 0);  //Set cursor to character 2 on line 0
+  lcd.print("Hello world!");
+  
+}
+void loop() {
+  if(digitalRead(tombol)==LOW){
+    lcd.print("Tombol 1 ditekan");
+    lcd.setCursor(0, 0);
+  }
+    if(digitalRead(tombol1)==LOW){
+    lcd.print("Tombol 2 ditekan");
+    lcd.setCursor(0, 1);
+  }
+  if(digitalRead(tombol2)==LOW){
+     lcd.clear();
+  }
+}
+
+
+no.5
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);  // set the LCD address to 0x3F for a 16
+//chars and 2 line display
+int tombol = A0;
+int tombol1 = A1;
+int tombol2 = A2;
+
+void setup() {
+  pinMode(tombol, INPUT_PULLUP);
+  pinMode(tombol1, INPUT_PULLUP);
+  lcd.init();
+  lcd.backlight();  // Make sure backlight is on
+  lcd.setCursor(0, 0);  //Set cursor to character 2 on line 0
+  lcd.print("Hello world!");
+}
+void loop() {
+  if(digitalRead(tombol)==LOW){
+    lcd.print("Tombol 1 ditekan");
+    lcd.setCursor(0, 0);
+  }
+  for (int positionCounter = 0;positionCounter < 13;positionCounter++) { 
+  lcd.scrollDisplayLeft(); 
+  delay(150); 
+  } 
+  if(digitalRead(tombol1)==LOW){
+    lcd.print("Tombol 2 ditekan");
+    lcd.setCursor(0, 1);
+  }
+  for (int positionCounter = 0;positionCounter < 29;positionCounter++) { 
+  lcd.scrollDisplayRight(); 
+  delay(150);
+  }
+  if(digitalRead(tombol2)==LOW){
+     lcd.clear();
+  }
+  for (int positionCounter = 0; positionCounter < 16;positionCounter++) { 
+  lcd.scrollDisplayLeft(); 
+  delay(150); 
+  }
+  delay(1000); 
+}
+
+no.7
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);  // set the LCD address to 0x3F for a 16
+//chars and 2 line display
+int tombol = A0;
+int tombol1 = A1;
+int tombol2 = A2;
+
+void setup() {
+  pinMode(tombol, INPUT_PULLUP);
+  pinMode(tombol1, INPUT_PULLUP);
+  pinMode(tombol2, INPUT_PULLUP);
+  lcd.init();
+  // lcd.clear();
+  lcd.backlight();  // Make sure backlight is on
+  // Print a message on both lines of the LCD.
+  lcd.setCursor(0, 0);  //Set cursor to character 2 on line 0
+  Serial.begin(9600);
+  lcd.print("Hello!");
+}
+void loop() {
+  if (Serial.available()) { 
+delay(100); 
+lcd.clear(); 
+ while (Serial.available() > 0) { 
+lcd.write(Serial.read()); 
+ } 
+ }
+  if(digitalRead(tombol)==LOW){
+    lcd.scrollDisplayRight();
+    delay(100);
+  }
+}
+
+no 10. 
+#include <Wire.h>                 
+#include <LiquidCrystal_I2C.h> // menambahkan library LCD I2C   
+ 
+LiquidCrystal_I2C lcd(0x27,16,2); // set alamat I2C dan ukuran LCD
+ 
+void setup() {
+  // Inisiasi LCD
+  lcd.init(); 
+}
+ 
+void loop() {
+    lcd.backlight(); // menyalakan backlight                        
+    lcd.print("barudak"); // menampilkan teks pada LCD
+    delay(2000);
+ 
+    lcd.clear(); // menghapus tampilan LCD
+    lcd.noBacklight(); // mematikan backlight          
+    lcd.print("Lampu Mati");    
+    delay(2000);
+ 
+    lcd.clear();                
+    lcd.backlight();
+    lcd.print("Lampu Hidup");   
+    delay(2000);
+ 
+    lcd.clear();                
+    lcd.setCursor(0,0); // set posisi cursor di kolom 0 baris 0         
+    lcd.print("Baris satu");    
+    lcd.setCursor(3,1); // set posisi cursor di kolom 3 baris 1       
+    lcd.print("Geser"); 
+    delay(3000);
+ 
+    lcd.clear();                
+  }
