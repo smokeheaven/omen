@@ -1,0 +1,298 @@
+modul 1 no1
+//untuk menghidupkan salah satu led (untuk code ini, led yang tersambung di pin 11
+int LED = 11;  // Mendefinisikan variabel LED dengan pin 11 untuk mengaktifkan LED
+void setup() {
+  pinMode(LED, OUTPUT);  // Mengatur pin LED sebagai OUTPUT
+}
+void loop() {
+  digitalWrite(LED, HIGH);  // Menyalakan LED
+  delay(1000);  // Menunggu selama 1000 milidetik (1 detik)
+  digitalWrite(LED, LOW);  // Mematikan LED
+  delay(1000);  // Menunggu selama 1000 milidetik (1 detik)
+}
+
+
+modul 1 no2
+//Untuk menghidupkan led sekaligus 3
+int LED1 = 11;  // Mendefinisikan variabel LED1 dengan pin 11 untuk mengaktifkan LED pertama
+int LED2 = 10;  // Mendefinisikan variabel LED2 dengan pin 10 untuk mengaktifkan LED kedua
+int LED3 = 9;   // Mendefinisikan variabel LED3 dengan pin 9 untuk mengaktifkan LED ketiga
+void setup() {
+  pinMode(LED1, OUTPUT);  // Mengatur pin LED1 sebagai OUTPUT
+  pinMode(LED2, OUTPUT);  // Mengatur pin LED2 sebagai OUTPUT
+  pinMode(LED3, OUTPUT);  // Mengatur pin LED3 sebagai OUTPUT
+}
+void loop() {
+  digitalWrite(LED1, HIGH);  // Menyalakan LED pertama
+  digitalWrite(LED2, HIGH);  // Menyalakan LED kedua
+  digitalWrite(LED3, HIGH);  // Menyalakan LED ketiga
+  delay(1000);  // Menunggu selama 1000 milidetik (1 detik)
+  digitalWrite(LED1, LOW);  // Mematikan LED pertama
+  digitalWrite(LED2, LOW);  // Mematikan LED kedua
+  digitalWrite(LED3, LOW);  // Mematikan LED ketiga
+  delay(1000);  // Menunggu selama 1000 milidetik (1 detik)
+}
+
+
+modul 1 no3
+//Untuk menghidupkan led secara bergantian
+int LED1 = 11;  // Mendefinisikan variabel LED1 dengan pin 11 untuk mengaktifkan LED pertama
+int LED2 = 10;  // Mendefinisikan variabel LED2 dengan pin 10 untuk mengaktifkan LED kedua
+int LED3 = 9;   // Mendefinisikan variabel LED3 dengan pin 9 untuk mengaktifkan LED ketiga
+void setup() {
+  pinMode(LED1, OUTPUT);  // Mengatur pin LED1 sebagai OUTPUT
+  pinMode(LED2, OUTPUT);  // Mengatur pin LED2 sebagai OUTPUT
+  pinMode(LED3, OUTPUT);  // Mengatur pin LED3 sebagai OUTPUT
+}
+void loop() {
+  digitalWrite(LED1, HIGH);  // Menyalakan LED pertama
+  delay(1000);  // Menunggu selama 1000 milidetik (1 detik)
+  digitalWrite(LED2, HIGH);  // Menyalakan LED kedua
+  delay(1500);  // Menunggu selama 1500 milidetik (1,5 detik)
+  digitalWrite(LED3, HIGH);  // Menyalakan LED ketiga
+  delay(2000);  // Menunggu selama 2000 milidetik (2 detik)
+  digitalWrite(LED1, LOW);  // Mematikan LED pertama
+  digitalWrite(LED2, LOW);  // Mematikan LED kedua
+  digitalWrite(LED3, LOW);  // Mematikan LED ketiga
+  delay(1000);  // Menunggu selama 1000 milidetik (1 detik)
+}
+
+
+modul 1 no4
+//Coding untuk fading (redup)
+int LED1 = 11;  // Mendefinisikan variabel LED1 dengan pin 11 untuk mengaktifkan LED pertama
+int LED2 = 10;  // Mendefinisikan variabel LED2 dengan pin 10 untuk mengaktifkan LED kedua
+int LED3 = 9;   // Mendefinisikan variabel LED3 dengan pin 9 untuk mengaktifkan LED ketiga
+int i;          // Variabel iterasi i untuk mengatur kecerahan LED
+void setup() {
+  pinMode(LED1, OUTPUT);  // Mengatur pin LED1 sebagai OUTPUT
+  pinMode(LED2, OUTPUT);  // Mengatur pin LED2 sebagai OUTPUT
+  pinMode(LED3, OUTPUT);  // Mengatur pin LED3 sebagai OUTPUT
+}
+void loop() {
+  for (i = 255; i >= 0; i -= 5) {
+    analogWrite(LED1, i);  // Mengatur kecerahan LED pertama
+    analogWrite(LED2, i);  // Mengatur kecerahan LED kedua
+    analogWrite(LED3, i);  // Mengatur kecerahan LED ketiga
+    delay(100);            // Menunggu selama 100 milidetik (0.1 detik)
+  }
+}
+
+
+modul 1 no6
+// C++ code
+int LED1 = 11;  // Mendefinisikan variabel LED1 dengan pin 11 untuk mengaktifkan LED pertama
+int LED2 = 10;  // Mendefinisikan variabel LED2 dengan pin 10 untuk mengaktifkan LED kedua
+int LED3 = 9;   // Mendefinisikan variabel LED3 dengan pin 9 untuk mengaktifkan LED ketiga
+int i;          // Variabel iterasi i untuk mengatur kecerahan LED
+void setup() {
+  pinMode(LED1, OUTPUT);  // Mengatur pin LED1 sebagai OUTPUT
+  pinMode(LED2, OUTPUT);  // Mengatur pin LED2 sebagai OUTPUT
+  pinMode(LED3, OUTPUT);  // Mengatur pin LED3 sebagai OUTPUT
+}
+void loop() {
+  for (i = 0; i <= 255; i += 25) {
+    analogWrite(LED1, i);  // Mengatur kecerahan LED pertama
+    delay(300);            // Menunggu selama 300 milidetik (0.3 detik)
+    analogWrite(LED2, i);  // Mengatur kecerahan LED kedua
+    delay(200);            // Menunggu selama 200 milidetik (0.2 detik)
+    analogWrite(LED3, i);  // Mengatur kecerahan LED ketiga
+    delay(100);            // Menunggu selama 100 milidetik (0.1 detik)
+  }
+  for (i = 0; i <= 255; i -= 25) {
+    analogWrite(LED1, i);  // Mengatur kecerahan LED pertama
+    delay(300);            // Menunggu selama 300 milidetik (0.3 detik)
+    analogWrite(LED2, i);  // Mengatur kecerahan LED kedua
+    delay(200);            // Menunggu selama 200 milidetik (0.2 detik)
+    analogWrite(LED3, i);  // Mengatur kecerahan LED ketiga
+    delay(100);            // Menunggu selama 100 milidetik (0.1 detik)
+  }
+}
+
+
+modul 1 no7
+int led = 11;  // Mendefinisikan variabel 'led' untuk menentukan pin LED (pin 11)
+int pot = A0;  // Mendefinisikan variabel 'pot' untuk menentukan pin potensiometer (Analog 0)
+int data;      // Variabel 'data' untuk menyimpan nilai pembacaan potensiometer
+void setup() {
+  pinMode(led, OUTPUT);  // Mengatur pin LED sebagai OUTPUT
+  pinMode(pot, INPUT);   // Mengatur pin potensiometer sebagai INPUT
+}
+void loop() {
+  data = analogRead(pot);  // Membaca nilai analog dari potensiometer
+  data = data / 4;        // Mengubah nilai pembacaan potensiometer menjadi rentang (0-255)
+  analogWrite(led, data);  // Mengatur kecerahan LED berdasarkan nilai yang dibaca dari potensiometer
+}
+
+
+modul 1 no8
+int LED1 = 11;  // Mendefinisikan variabel LED1 dengan pin 11 untuk mengaktifkan LED pertama
+int LED2 = 10;  // Mendefinisikan variabel LED2 dengan pin 10 untuk mengaktifkan LED kedua
+int LED3 = 9;   // Mendefinisikan variabel LED3 dengan pin 9 untuk mengaktifkan LED ketiga
+int pot = A0;   // Mendefinisikan variabel 'pot' untuk menentukan pin potensiometer (Analog 0)
+int data;       // Variabel 'data' untuk menyimpan nilai pembacaan potensiometer
+void setup() {
+  pinMode(LED1, OUTPUT);  // Mengatur pin LED1 sebagai OUTPUT
+  pinMode(LED2, OUTPUT);  // Mengatur pin LED2 sebagai OUTPUT
+  pinMode(LED3, OUTPUT);  // Mengatur pin LED3 sebagai OUTPUT
+  pinMode(pot, INPUT);    // Mengatur pin potensiometer sebagai INPUT
+}
+void loop() {
+  data = analogRead(pot);  // Membaca nilai analog dari potensiometer
+  data = data / 4;        // Mengubah nilai pembacaan potensiometer menjadi rentang (0-255)
+  analogWrite(LED1, data);  // Mengatur kecerahan LED pertama berdasarkan nilai potensiometer
+  analogWrite(LED2, data);  // Mengatur kecerahan LED kedua berdasarkan nilai potensiometer
+  analogWrite(LED3, data);  // Mengatur kecerahan LED ketiga berdasarkan nilai potensiometer
+}
+
+
+modul 1 no10
+int led = 11;       // Mendefinisikan variabel 'led' dengan pin 11 untuk mengendalikan LED
+int tombol = 2;     // Mendefinisikan variabel 'tombol' dengan pin 2 untuk membaca tombol
+void setup() {
+  pinMode(led, OUTPUT);   // Mengatur pin LED sebagai OUTPUT
+  pinMode(tombol, INPUT); // Mengatur pin tombol sebagai INPUT
+}
+void loop() {
+  if (digitalRead(tombol) == LOW) {
+    digitalWrite(led, HIGH);  // Menyalakan LED jika tombol ditekan (LOW)
+  } else {
+    digitalWrite(led, LOW);   // Mematikan LED jika tombol tidak ditekan (HIGH)
+  }
+}
+
+
+modul 1 no11
+int led1 = 11;      // Mendefinisikan variabel 'led1' dengan pin 11 untuk mengendalikan LED pertama
+int led2 = 10;      // Mendefinisikan variabel 'led2' dengan pin 10 untuk mengendalikan LED kedua
+int led3 = 9;       // Mendefinisikan variabel 'led3' dengan pin 9 untuk mengendalikan LED ketiga
+int tombol = 2;     // Mendefinisikan variabel 'tombol' dengan pin 2 untuk membaca tombol
+void setup() {
+  pinMode(led1, OUTPUT);   // Mengatur pin LED1 sebagai OUTPUT
+  pinMode(led2, OUTPUT);   // Mengatur pin LED2 sebagai OUTPUT
+  pinMode(led3, OUTPUT);   // Mengatur pin LED3 sebagai OUTPUT
+  pinMode(tombol, INPUT);  // Mengatur pin tombol sebagai INPUT
+}
+void loop() {
+  if (digitalRead(tombol) == LOW) {
+    digitalWrite(led1, HIGH);  // Menyalakan LED pertama jika tombol ditekan (LOW)
+    digitalWrite(led2, HIGH);  // Menyalakan LED kedua jika tombol ditekan (LOW)
+    digitalWrite(led3, HIGH);  // Menyalakan LED ketiga jika tombol ditekan (LOW)
+  } else {
+    digitalWrite(led1, LOW);   // Mematikan LED pertama jika tombol tidak ditekan (HIGH)
+    digitalWrite(led2, LOW);   // Mematikan LED kedua jika tombol tidak ditekan (HIGH)
+    digitalWrite(led3, LOW);   // Mematikan LED ketiga jika tombol tidak ditekan (HIGH)
+  }
+}
+
+
+modul 1 no12
+int led1 = 9;    // Mendefinisikan variabel 'led1' dengan pin 9 untuk mengendalikan LED pertama
+int led2 = 10;   // Mendefinisikan variabel 'led2' dengan pin 10 untuk mengendalikan LED kedua
+int led3 = 11;   // Mendefinisikan variabel 'led3' dengan pin 11 untuk mengendalikan LED ketiga
+int tombol = A0; // Mendefinisikan variabel 'tombol' dengan pin A0 untuk membaca tombol
+int i;           // Variabel iterasi i untuk mengatur kecerahan LED
+int nilai;        // Variabel 'nilai' untuk menyimpan pembacaan potensiometer
+int data;         // Variabel 'data' yang tidak digunakan (tidak diperlukan)
+int pot = A1;     // Mendefinisikan variabel 'pot' dengan pin A1 untuk membaca potensiometer
+
+void setup() {
+  pinMode(led1, OUTPUT);  // Mengatur pin LED1 sebagai OUTPUT
+  pinMode(led2, OUTPUT);  // Mengatur pin LED2 sebagai OUTPUT
+  pinMode(led3, OUTPUT);  // Mengatur pin LED3 sebagai OUTPUT
+  pinMode(tombol, INPUT); // Mengatur pin tombol sebagai INPUT
+}
+void loop() {
+  nilai = analogRead(pot);  // Membaca nilai analog dari potensiometer
+  if (digitalRead(tombol) == HIGH) {
+    // Mengendalikan kecerahan LED1
+    for (i = 0; i <= 255; i += 25) {
+      analogWrite(led1, i);
+      delay(500);
+    }
+    for (i = 255; i >= 0; i -= 25) {
+      analogWrite(led1, i);
+      delay(500);
+    }
+    delay(500);
+
+    // Mengendalikan kecerahan LED2
+    for (i = 0; i <= 255; i += 25) {
+      analogWrite(led2, i);
+      delay(500);
+    }
+    for (i = 255; i >= 0; i -= 25) {
+      analogWrite(led2, i);
+      delay(500);
+    }
+    delay(500);
+
+    // Mengendalikan kecerahan LED3
+    for (i = 0; i <= 255; i += 25) {
+      analogWrite(led3, i);
+      delay(500);
+    }
+    for (i = 255; i >= 0; i -= 25) {
+      analogWrite(led3, i);
+      delay(500);
+    }
+    delay(500);
+  } else {
+    digitalWrite(led1, LOW);  // Mematikan LED1 jika tombol tidak ditekan
+    digitalWrite(led2, LOW);  // Mematikan LED2 jika tombol tidak ditekan
+    digitalWrite(led3, LOW);  // Mematikan LED3 jika tombol tidak ditekan
+    }
+}
+
+
+modul 1 no13
+int led1 = 9;    // Mendefinisikan variabel 'led1' dengan pin 9 untuk mengendalikan LED pertama
+int led2 = 10;   // Mendefinisikan variabel 'led2' dengan pin 10 untuk mengendalikan LED kedua
+int led3 = 11;   // Mendefinisikan variabel 'led3' dengan pin 11 untuk mengendalikan LED ketiga
+int tombol = A0; // Mendefinisikan variabel 'tombol' dengan pin A0 untuk membaca tombol
+int i;           // Variabel iterasi i untuk mengatur kecerahan LED
+int nilai;        // Variabel 'nilai' untuk menyimpan pembacaan potensiometer
+int data;         // Variabel 'data' yang tidak digunakan (tidak diperlukan)
+int pot = A1;     // Mendefinisikan variabel 'pot' dengan pin A1 untuk membaca potensiometer
+
+void setup() {
+  pinMode(led1, OUTPUT);  // Mengatur pin LED1 sebagai OUTPUT
+  pinMode(led2, OUTPUT);  // Mengatur pin LED2 sebagai OUTPUT
+  pinMode(led3, OUTPUT);  // Mengatur pin LED3 sebagai OUTPUT
+  pinMode(tombol, INPUT); // Mengatur pin tombol sebagai INPUT
+}
+void loop() {
+  nilai = analogRead(pot);  // Membaca nilai analog dari potensiometer
+  if (digitalRead(tombol) == LOW) {
+    // Mengendalikan kecerahan LED1
+    for (i = 0; i <= 255; i += 25) {
+      analogWrite(led1, i);
+    }
+    for (i = 255; i >= 0; i -= 25) {
+      analogWrite(led1, i);
+    }
+    delay(analogRead(pot));
+
+    // Mengendalikan kecerahan LED2
+    for (i = 0; i <= 255; i += 25) {
+      analogWrite(led2, i);
+    }
+    for (i = 255; i >= 0; i -= 25) {
+      analogWrite(led2, i);
+    }
+    delay(analogRead(pot));
+
+    // Mengendalikan kecerahan LED3
+    for (i = 0; i <= 255; i += 25) {
+      analogWrite(led3, i);
+    }
+    for (i = 255; i >= 0; i -= 25) {
+      analogWrite(led3, i);
+    }
+    delay(analogRead(pot));
+  } else {
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, LOW);
+    digitalWrite(led3, LOW);
+    }
+}
