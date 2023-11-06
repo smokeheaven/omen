@@ -1,0 +1,51 @@
+Interface Ultrassonic
+
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(32,16,2);
+int led1 = 7;
+int led2 = 6;
+int led3 = 3;
+int poten = A2;
+int button = 7;
+int counter = 0;
+int ldr = A1;
+int buzzer = 10;
+int trigpin = 11;
+int echopin = 10;
+void setup() {
+// put your setup code here, to run once:
+pinMode(trigpin, OUTPUT);
+pinMode(echopin, INPUT);
+Serial.begin(9600);
+
+}
+
+void loop() {
+// put your main code here, to run repeatedly:
+long duration, inches, cm;
+digitalWrite(trigpin, LOW);
+delayMicroseconds(2);
+digitalWrite(trigpin, HIGH);
+delayMicroseconds(10);
+digitalWrite(trigpin, LOW);
+duration = pulseIn(echopin, HIGH); //pulseIn digunakan untuk mengonversi nilai 
+
+inches = microsecondsToInches(duration); // pemanggilan fungsi
+cm = microsecondsToCentimeters(duration); // pemanggilan fungsi
+Serial.print(inches);
+Serial.print(" in, ");
+Serial.print(cm);
+Serial.print(" cm");
+Serial.println();
+Serial.println(duration);
+delay(100);
+}
+long microsecondsToInches(long microseconds) // rumus
+{
+return microseconds / 74 / 2;
+}
+// fungsi untuk menghitung jarak dalam satuan cm
+long microsecondsToCentimeters(long microseconds) // rumus
+{
+return microseconds / 29 / 2;
+}
